@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import userServerDarkMode from "@/hooks/user-server-dark-mode";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,8 +24,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = userServerDarkMode();
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
